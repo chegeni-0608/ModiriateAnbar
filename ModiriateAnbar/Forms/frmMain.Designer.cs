@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             this.pnlSidebar = new System.Windows.Forms.Panel();
+            this.btnEmpioyeeList = new System.Windows.Forms.Button();
+            this.btnProductList = new System.Windows.Forms.Button();
             this.pnlFooter = new System.Windows.Forms.Panel();
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.btnProductList = new System.Windows.Forms.Button();
-            this.btnEmpioyeeList = new System.Windows.Forms.Button();
+            this.btnProductCategory = new System.Windows.Forms.Button();
             this.pnlSidebar.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSidebar
             // 
             this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.pnlSidebar.Controls.Add(this.btnProductCategory);
             this.pnlSidebar.Controls.Add(this.btnEmpioyeeList);
             this.pnlSidebar.Controls.Add(this.btnProductList);
             this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Right;
@@ -46,6 +48,26 @@
             this.pnlSidebar.Name = "pnlSidebar";
             this.pnlSidebar.Size = new System.Drawing.Size(110, 450);
             this.pnlSidebar.TabIndex = 0;
+            // 
+            // btnEmpioyeeList
+            // 
+            this.btnEmpioyeeList.Location = new System.Drawing.Point(6, 41);
+            this.btnEmpioyeeList.Name = "btnEmpioyeeList";
+            this.btnEmpioyeeList.Size = new System.Drawing.Size(95, 23);
+            this.btnEmpioyeeList.TabIndex = 1;
+            this.btnEmpioyeeList.Text = "لیست کارمندان";
+            this.btnEmpioyeeList.UseVisualStyleBackColor = true;
+            this.btnEmpioyeeList.Click += new System.EventHandler(this.btnEmpioyeeList_Click);
+            // 
+            // btnProductList
+            // 
+            this.btnProductList.Location = new System.Drawing.Point(6, 12);
+            this.btnProductList.Name = "btnProductList";
+            this.btnProductList.Size = new System.Drawing.Size(95, 23);
+            this.btnProductList.TabIndex = 0;
+            this.btnProductList.Text = "لیست محصولات";
+            this.btnProductList.UseVisualStyleBackColor = true;
+            this.btnProductList.Click += new System.EventHandler(this.btnProductList_Click);
             // 
             // pnlFooter
             // 
@@ -65,25 +87,15 @@
             this.pnlMain.Size = new System.Drawing.Size(690, 411);
             this.pnlMain.TabIndex = 3;
             // 
-            // btnProductList
+            // btnProductCategory
             // 
-            this.btnProductList.Location = new System.Drawing.Point(6, 12);
-            this.btnProductList.Name = "btnProductList";
-            this.btnProductList.Size = new System.Drawing.Size(95, 23);
-            this.btnProductList.TabIndex = 0;
-            this.btnProductList.Text = "لیست محصولات";
-            this.btnProductList.UseVisualStyleBackColor = true;
-            this.btnProductList.Click += new System.EventHandler(this.btnProductList_Click);
-            // 
-            // btnEmpioyeeList
-            // 
-            this.btnEmpioyeeList.Location = new System.Drawing.Point(6, 41);
-            this.btnEmpioyeeList.Name = "btnEmpioyeeList";
-            this.btnEmpioyeeList.Size = new System.Drawing.Size(92, 23);
-            this.btnEmpioyeeList.TabIndex = 1;
-            this.btnEmpioyeeList.Text = "لیست کارمندان";
-            this.btnEmpioyeeList.UseVisualStyleBackColor = true;
-            this.btnEmpioyeeList.Click += new System.EventHandler(this.btnEmpioyeeList_Click);
+            this.btnProductCategory.Location = new System.Drawing.Point(6, 70);
+            this.btnProductCategory.Name = "btnProductCategory";
+            this.btnProductCategory.Size = new System.Drawing.Size(92, 23);
+            this.btnProductCategory.TabIndex = 2;
+            this.btnProductCategory.Text = "لیست گروهها";
+            this.btnProductCategory.UseVisualStyleBackColor = true;
+            this.btnProductCategory.Click += new System.EventHandler(this.btnProductCategory_Click);
             // 
             // frmMain
             // 
@@ -110,5 +122,6 @@
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Button btnEmpioyeeList;
         private System.Windows.Forms.Button btnProductList;
+        private System.Windows.Forms.Button btnProductCategory;
     }
 }

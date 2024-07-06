@@ -41,7 +41,11 @@ namespace ModiriateAnbar.Forms
             
         pnlMain.Controls.Add(uc);
 
+        }
 
+        private void btnProductCategory_Click(object sender, EventArgs e)
+        {
+            ShowUserContrl(new ucCategory());
         }
     }
 }
