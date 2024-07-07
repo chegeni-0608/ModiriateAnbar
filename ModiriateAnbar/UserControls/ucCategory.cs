@@ -29,7 +29,7 @@ namespace ModiriateAnbar.UserControls
             //step1 : create sqlconnection
             using (SqlConnection sqlConnection = new SqlConnection())
             {
-                sqlConnection.ConnectionString = "Data Source=.; Initial Catalog=CsharpSample";
+                sqlConnection.ConnectionString = "Data Source=.; Initial Catalog=CsharpSampleDB; Integrated Security=true";
 
                 //step2 : create sqlcommand
                 SqlCommand sqlCommand = new SqlCommand();
