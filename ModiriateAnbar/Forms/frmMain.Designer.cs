@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.pnlSidebar = new System.Windows.Forms.Panel();
+            this.btnProductCategory = new System.Windows.Forms.Button();
             this.btnEmpioyeeList = new System.Windows.Forms.Button();
             this.btnProductList = new System.Windows.Forms.Button();
             this.pnlFooter = new System.Windows.Forms.Panel();
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.btnProductCategory = new System.Windows.Forms.Button();
             this.pnlSidebar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +48,16 @@
             this.pnlSidebar.Name = "pnlSidebar";
             this.pnlSidebar.Size = new System.Drawing.Size(110, 450);
             this.pnlSidebar.TabIndex = 0;
+            // 
+            // btnProductCategory
+            // 
+            this.btnProductCategory.Location = new System.Drawing.Point(6, 70);
+            this.btnProductCategory.Name = "btnProductCategory";
+            this.btnProductCategory.Size = new System.Drawing.Size(92, 23);
+            this.btnProductCategory.TabIndex = 2;
+            this.btnProductCategory.Text = "لیست گروه ها";
+            this.btnProductCategory.UseVisualStyleBackColor = true;
+            this.btnProductCategory.Click += new System.EventHandler(this.btnProductCategory_Click);
             // 
             // btnEmpioyeeList
             // 
@@ -86,16 +96,6 @@
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(690, 411);
             this.pnlMain.TabIndex = 3;
-            // 
-            // btnProductCategory
-            // 
-            this.btnProductCategory.Location = new System.Drawing.Point(6, 70);
-            this.btnProductCategory.Name = "btnProductCategory";
-            this.btnProductCategory.Size = new System.Drawing.Size(92, 23);
-            this.btnProductCategory.TabIndex = 2;
-            this.btnProductCategory.Text = "لیست گروهها";
-            this.btnProductCategory.UseVisualStyleBackColor = true;
-            this.btnProductCategory.Click += new System.EventHandler(this.btnProductCategory_Click);
             // 
             // frmMain
             // 

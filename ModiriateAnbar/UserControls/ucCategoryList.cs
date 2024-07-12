@@ -45,14 +45,17 @@ namespace ModiriateAnbar.UserControls
                 // step 4
                 SqlDataReader reader = cmd.ExecuteReader();
                 Category model;
-                while (reader.Read())
+                if (reader.HasRows)
                 {
-                    model = new Category();
-                    model.CategoryId = Convert.ToInt32(reader["CategoryID"]);
-                    model.CategoryName = reader["CategoryName"].ToString();
-                    model.Description = reader["Description"].ToString();
+                    while (reader.Read())
+                    {
+                        model = new Category();
+                        model.CategoryId = Convert.ToInt32(reader["CategoryID"]);
+                        model.CategoryName = reader["CategoryName"].ToString();
+                        model.Description = reader["Description"].ToString();
 
-                    category.Add(model);
+                        category.Add(model);
+                    }
                 }
 
                 reader.Close();
@@ -60,6 +63,28 @@ namespace ModiriateAnbar.UserControls
             }
 
             dataGridView1.DataSource= category;
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //MessageBox.Show("Row Index" + e.RowIndex);
+            //MessageBox.Show("COlumn Index" + e.ColumnIndex);
+
+            //remove
+            if(e.ColumnIndex == 0)
+            {
+                if (MessageBox.Show("در صورت حذف قابل بازیابی نمی باشد", "هشدار", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                 int CategoryId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CategoryName"].Value);
+
+                    DeleteCategory(CategoryId);
+                }
+            }
+        }
+
+        private void DeleteCategory(int categoryId)
+        {
+            throw new NotImplementedException();
         }
     }
 }
