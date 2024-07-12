@@ -45,7 +45,7 @@ namespace ModiriateAnbar.Forms
 
         private void btnProductCategory_Click(object sender, EventArgs e)
         {
-            ShowUserContrl(new ucCategory());
+            ShowUserContrl(new ucCategoryList());
         }
     }
 }
