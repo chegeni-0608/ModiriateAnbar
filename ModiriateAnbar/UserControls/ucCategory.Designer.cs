@@ -39,52 +39,58 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(232, 49);
+            this.label1.Location = new System.Drawing.Point(348, 75);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.Size = new System.Drawing.Size(84, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "ثبت گروه جدید";
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(154, 79);
+            this.txtTitle.Location = new System.Drawing.Point(231, 122);
+            this.txtTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(218, 20);
+            this.txtTitle.Size = new System.Drawing.Size(325, 26);
             this.txtTitle.TabIndex = 3;
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(154, 105);
+            this.txtDescription.Location = new System.Drawing.Point(231, 162);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(218, 189);
+            this.txtDescription.Size = new System.Drawing.Size(325, 289);
             this.txtDescription.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(378, 79);
+            this.label2.Location = new System.Drawing.Point(567, 122);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(48, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "عنوان :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(378, 108);
+            this.label3.Location = new System.Drawing.Point(567, 166);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.Size = new System.Drawing.Size(69, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "توضیحات :";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(297, 300);
+            this.btnSave.Location = new System.Drawing.Point(446, 462);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(112, 35);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "ذخیره";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -92,7 +98,7 @@
             // 
             // ucCategory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label3);
@@ -100,8 +106,10 @@
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ucCategory";
-            this.Size = new System.Drawing.Size(555, 390);
+            this.Size = new System.Drawing.Size(832, 600);
+            this.Load += new System.EventHandler(this.ucCategory_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

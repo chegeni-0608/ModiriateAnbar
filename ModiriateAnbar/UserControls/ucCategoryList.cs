@@ -14,6 +14,7 @@ namespace ModiriateAnbar.UserControls
 {
     public partial class ucCategoryList : UserControl
     {
+     
         private object categories;
 
         public ucCategoryList()
@@ -69,22 +70,61 @@ namespace ModiriateAnbar.UserControls
         {
             //MessageBox.Show("Row Index" + e.RowIndex);
             //MessageBox.Show("COlumn Index" + e.ColumnIndex);
-
+            int CategoryId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CategoryId"].Value);
             //remove
-            if(e.ColumnIndex == 0)
+            if (e.ColumnIndex == 1)
             {
                 if (MessageBox.Show("در صورت حذف قابل بازیابی نمی باشد", "هشدار", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                 int CategoryId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["CategoryName"].Value);
-
+                
                     DeleteCategory(CategoryId);
+                    fillgridview();
                 }
+            }
+            //Edit
+            if (e.ColumnIndex == 0)
+            {
+                // MessageBox.Show("edit click");
+                
+
+                var frmMain = Application.OpenForms["frmMain"];
+                frmMain.Controls["pnlMain"].Controls.Clear();
+
+                ucCategory uc=new ucCategory(CategoryId);
+                frmMain.Controls["pnlMain"].Controls.Add(uc);
+
+
             }
         }
 
+
         private void DeleteCategory(int categoryId)
         {
-            throw new NotImplementedException();
+            //step1 : create sqlconnection
+            using (SqlConnection sqlConnection = new SqlConnection())
+            {
+                sqlConnection.ConnectionString = "Data Source=.; Initial Catalog=CsharpSampleDB; Integrated Security=true";
+
+                //step2 : create sqlcommand
+                SqlCommand sqlCommand = new SqlCommand();
+                sqlCommand.Connection = sqlConnection;
+                //sqlInjection Attack
+                //sqlCommand.CommandText = $"insert Categories(CategoryName,Description)values({title},{desciption})";
+
+                sqlCommand.CommandText = "Delete Categories Where CategoryId=@CategoryId";
+                //set paramiters
+                sqlCommand.Parameters.AddWithValue("CategoryId", categoryId);
+
+                //step3 : open sqlconnection
+                sqlConnection.Open();
+
+                //step4 :execute sqlcommand nonquery
+                sqlCommand.ExecuteNonQuery();
+
+                //step5 : close sqlconnection
+                sqlConnection.Close();
+
+            }
         }
     }
 }

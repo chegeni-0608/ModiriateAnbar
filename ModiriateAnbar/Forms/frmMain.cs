@@ -47,5 +47,10 @@ namespace ModiriateAnbar.Forms
         {
             ShowUserContrl(new ucCategoryList());
         }
+
+        private void btnAddNewCategory_Click(object sender, EventArgs e)
+        {
+            ShowUserContrl(new ucCategory());
+        }
     }
 }
