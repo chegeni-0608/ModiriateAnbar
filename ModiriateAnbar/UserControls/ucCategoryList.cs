@@ -24,10 +24,15 @@ namespace ModiriateAnbar.UserControls
 
         private void ucCategoryList_Load(object sender, EventArgs e)
         {
-            fillgridview();
+            // fillgridview();
+            fillgridviewWithSqlDataAdapter();
         }
 
-        private void fillgridview()
+        //private void fillgridview()
+
+       // private void fillgridviewWithSqlDataAdapter(string code, string CategoryName = null)
+
+        private void fillgridviewWithSqlDataAdapter(string CategoryName="")
         {
             var category=new List<Category>();
 
@@ -35,35 +40,28 @@ namespace ModiriateAnbar.UserControls
             using (SqlConnection 
                 sqlConnection = new SqlConnection("Data Source=.; Initial Catalog=CsharpSampleDB; Integrated Security=True")) 
             {
-                //step 2 
+                //step 2
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = sqlConnection;
-                cmd.CommandText = "Select CategoryID,CategoryName,Description from Categories";
+                //cmd.CommandText = "Select CategoryID,CategoryName,Description from Categories";
+                cmd.CommandText = "sp_GetCategories";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@CategoryName", CategoryName);
 
-                // step 3
-                sqlConnection.Open();
 
-                // step 4
-                SqlDataReader reader = cmd.ExecuteReader();
-                Category model;
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        model = new Category();
-                        model.CategoryId = Convert.ToInt32(reader["CategoryID"]);
-                        model.CategoryName = reader["CategoryName"].ToString();
-                        model.Description = reader["Description"].ToString();
 
-                        category.Add(model);
-                    }
-                }
+                //step 3 
+                SqlDataAdapter adapter= new SqlDataAdapter();
+                adapter.SelectCommand = cmd;
 
-                reader.Close();
-                sqlConnection.Close();
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+
+                dataGridView1.DataSource = ds.Tables[0];
+
             }
 
-            dataGridView1.DataSource= category;
+            
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -78,7 +76,7 @@ namespace ModiriateAnbar.UserControls
                 {
                 
                     DeleteCategory(CategoryId);
-                    fillgridview();
+                    fillgridviewWithSqlDataAdapter();
                 }
             }
             //Edit
@@ -125,6 +123,11 @@ namespace ModiriateAnbar.UserControls
                 sqlConnection.Close();
 
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            fillgridviewWithSqlDataAdapter(txtCategoryName.Text);
         }
     }
 }
