@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -46,7 +47,7 @@ namespace ModiriateAnbar.UserControls
                 //cmd.CommandText = "Select CategoryID,CategoryName,Description from Categories";
                 cmd.CommandText = "sp_GetCategories";
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CategoryName", CategoryName);
+                //cmd.Parameters.AddWithValue("@CategoryName", CategoryName);
 
 
 
@@ -127,7 +128,37 @@ namespace ModiriateAnbar.UserControls
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            fillgridviewWithSqlDataAdapter(txtCategoryName.Text);
+            fillgridviewWithSqlDataAdapter(
+         txtCategoryName.Text,
+         txtProductName.Text,
+         txtfromprice.Text,
+         txttoPrice.text)
+
+
+               )
+        }
+        private void FillGridView(string CategoryName,string ProductName,int? fromPrice,int? toPrice)
+        {
+            using (var sqlConnection=new SqlConnection(""))
+            {
+               var Command= new SqlCommand();
+                Command.Connection = sqlConnection;
+                Command.CommandText = "sp_products";
+                Command.CommandType = CommandType.StoredProcedure;
+                Command.Parameters.AddWithValue("@CategoryName",CategoryName);
+                Command.Parameters.AddWithValue("@ProductName",ProductName);
+                Command.Parameters.AddWithValue("@fromprice",fromPrice);
+                Command.Parameters.AddWithValue("@toPrice",toPrice);
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = Command;
+                DataTable dtProduct = new DataTable();
+                adapter.Fill(dtProduct);
+
+
+                dataGridView1.DataSource = dtProduct;
+
+            }
         }
     }
 }
