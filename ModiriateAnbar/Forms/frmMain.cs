@@ -36,11 +36,10 @@ namespace ModiriateAnbar.Forms
 
         private void ShowUserContrl(UserControl uc)
         {
-
         pnlMain.Controls.Clear();
-            
+         uc.Width=pnlMain.Width;
+         uc.Height=pnlMain.Height; 
         pnlMain.Controls.Add(uc);
-
         }
 
         private void btnProductCategory_Click(object sender, EventArgs e)

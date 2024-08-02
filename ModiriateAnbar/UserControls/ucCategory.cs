@@ -41,7 +41,12 @@ namespace ModiriateAnbar.UserControls
                 AddCategory(txtTitle.Text, txtDescription.Text);
                 MessageBox.Show("Add Category Succ..");
             }
-            
+            var frmMain = Application.OpenForms["frmMain"];
+            frmMain.Controls["pnlMain"].Controls.Clear();
+
+            var uc = new ucCategoryList();  
+            frmMain.Controls["pnlMain"].Controls.Add(uc);
+
         }
 
         private void AddCategory(string title, string desciption)
@@ -62,8 +67,9 @@ namespace ModiriateAnbar.UserControls
                 //sqlInjection Attack
                 //sqlCommand.CommandText = $"insert Categories(CategoryName,Description)values({title},{desciption})";
 
-                sqlCommand.CommandText = "insert Categories(CategoryName,Description)values(@CategoryName,@Description)";
+                sqlCommand.CommandText = "Update Categories Set CategoryName=@CategoryName,Descriptio=@Description Where CategryId=@categryId";
                 //set paramiters
+                sqlCommand.Parameters.AddWithValue("categoryId",categoryId);
                 sqlCommand.Parameters.AddWithValue("CategoryName", title);
                 sqlCommand.Parameters.AddWithValue("Description", desciption);
 

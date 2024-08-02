@@ -47,7 +47,7 @@ namespace ModiriateAnbar.UserControls
                 //cmd.CommandText = "Select CategoryID,CategoryName,Description from Categories";
                 cmd.CommandText = "sp_GetCategories";
                 cmd.CommandType = CommandType.StoredProcedure;
-                //cmd.Parameters.AddWithValue("@CategoryName", CategoryName);
+                cmd.Parameters.AddWithValue("@CategoryName", CategoryName);
 
 
 
@@ -91,7 +91,7 @@ namespace ModiriateAnbar.UserControls
 
                 ucCategory uc=new ucCategory(CategoryId);
                 frmMain.Controls["pnlMain"].Controls.Add(uc);
-
+                  
 
             }
         }
@@ -128,14 +128,14 @@ namespace ModiriateAnbar.UserControls
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            fillgridviewWithSqlDataAdapter(
-         txtCategoryName.Text,
-         txtProductName.Text,
-         txtfromprice.Text,
-         txttoPrice.text)
+         //   fillgridviewWithSqlDataAdapter(
+         //txtCategoryName.Text,
+         //txtProductName.Text,
+         //txtfromprice.Text,
+         //txttoPrice.text)
 
 
-               )
+         //      );
         }
         private void FillGridView(string CategoryName,string ProductName,int? fromPrice,int? toPrice)
         {
