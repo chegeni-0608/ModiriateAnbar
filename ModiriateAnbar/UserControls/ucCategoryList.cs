@@ -33,7 +33,7 @@ namespace ModiriateAnbar.UserControls
 
        // private void fillgridviewWithSqlDataAdapter(string code, string CategoryName = null)
 
-        private void fillgridviewWithSqlDataAdapter(string CategoryName="")
+        private void fillgridviewWithSqlDataAdapter(string categoryName= "")
         {
             var category=new List<Category>();
 
@@ -44,25 +44,18 @@ namespace ModiriateAnbar.UserControls
                 //step 2
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = sqlConnection;
-                //cmd.CommandText = "Select CategoryID,CategoryName,Description from Categories";
+               // cmd.CommandText = "Select CategoryID,CategoryName,Description from Categories";
                 cmd.CommandText = "sp_GetCategories";
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CategoryName", CategoryName);
-
-
-
-                //step 3 
-                SqlDataAdapter adapter= new SqlDataAdapter();
-                adapter.SelectCommand = cmd;
-
+                cmd.Parameters.AddWithValue("@CategoryName", categoryName);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                sqlConnection.Open();
                 DataSet ds = new DataSet();
                 adapter.Fill(ds);
-
                 dataGridView1.DataSource = ds.Tables[0];
 
             }
 
-            
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
