@@ -62,14 +62,15 @@ namespace ModiriateAnbar.UserControls
                 sqlConnection.ConnectionString = "Data Source=.; Initial Catalog=CsharpSampleDB; Integrated Security=true";
 
                 //step2 : create sqlcommand
-                SqlCommand sqlCommand = new SqlCommand();
-                sqlCommand.Connection = sqlConnection;
+                SqlCommand sqlCommand = new SqlCommand("UPDATE Categories SET CategoryName = @CategoryName, Description = @Description WHERE CategoryId = @CategoryId", sqlConnection);
+                //SqlCommand sqlCommand = new SqlCommand();
+                //sqlCommand.Connection = sqlConnection;
                 //sqlInjection Attack
                 //sqlCommand.CommandText = $"insert Categories(CategoryName,Description)values({title},{desciption})";
 
-                sqlCommand.CommandText = "Update Categories Set CategoryName=@CategoryName,Descriptio=@Description Where CategryId=@categryId";
+                //sqlCommand.CommandText = "Update Categories Set CategoryName=@CategoryName,Descriptio=@Description Where CategryId=@categryId";
                 //set paramiters
-                sqlCommand.Parameters.AddWithValue("categoryId",categoryId);
+                sqlCommand.Parameters.AddWithValue("CategoryId",categoryId);
                 sqlCommand.Parameters.AddWithValue("CategoryName", title);
                 sqlCommand.Parameters.AddWithValue("Description", desciption);
 
